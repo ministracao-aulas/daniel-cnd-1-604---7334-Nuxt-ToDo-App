@@ -1,10 +1,10 @@
 <template>
-    <div class="w-full md:w-10/12 md:mx-auto h-screen">
-        <h2 class="text-3xl text-gray-200 font-bold pl-4">Todo App</h2>
+    <div class="absolute w-full sm:w-10/12 md:w-6/12 max-w-3xl mx-auto pt-8 h-screen px-4">
+        <h2 class="text-3xl text-gray-200 font-bold text-center md:text-left pl-4">Todo App</h2>
 
-        <div class="w-full flex flex-col gap-3 px-2 pt-4">
+        <div class="relative w-full flex flex-col gap-3 px-2 pt-4">
             <div class="w-full">
-                <UButtonGroup class="w-full">
+                <UButtonGroup class="w-full flex justify-center">
                     <UInput
                         v-model="form.content"
                         type="text"
@@ -27,12 +27,12 @@
             <!-- To Do -->
             <div class="w-full flex flex-col gap-3 pt-3 mb-8">
                 <template v-for="(todoItem, itemIndex) in doneFalseOnly" key="itemIndex">
-                    <div class="bg-gray-600 hover:bg-gray-600/40 h-12 w-full rounded-md grid grid-cols-5 gap-2">
-                        <div class="w-full col-span-4 ps-2 pe-3 overflow-hidden text-nowrap flex content-center">
+                    <div class="bg-gray-600 hover:bg-gray-600/40 h-12 w-full rounded-md grid grid-cols-12 gap-2">
+                        <div class="w-full col-span-9 ps-2 pe-3 overflow-hidden text-nowrap flex content-center">
                             <p class="text-gray-200 text-xl pt-2">{{ todoItem.content }}</p>
                         </div>
 
-                        <div class="w-full flex gap-2 justify-between">
+                        <div class="col-span-3 w-full flex gap-2 justify-between p-1">
                             <UButton
                                 @click.prevent.stop="deleteItem(todoItem)"
                                 icon="i-lucide-trash"
@@ -60,13 +60,13 @@
             <!-- Done -->
             <div class="w-full flex flex-col gap-3 pt-3 mb-8 opacity-20 hover:opacity-80">
                 <template v-for="(todoItem, itemIndex) in doneTrueOnly" key="itemIndex">
-                    <div class="bg-gray-600 hover:bg-gray-600/40 h-12 w-full rounded-md grid grid-cols-5 gap-2">
-                        <div class="w-full col-span-4 ps-2 pe-3 overflow-hidden text-nowrap flex content-center">
+                    <div class="bg-gray-600 hover:bg-gray-600/40 h-12 w-full rounded-md grid grid-cols-12 gap-2">
+                        <div class="w-full col-span-9 ps-2 pe-3 overflow-hidden text-nowrap flex content-center">
                             <p class="text-gray-200 text-xl pt-2 italic line-through">
                                 {{ todoItem.content }}
                             </p>
                         </div>
-                        <div class="w-full flex gap-2 justify-between">
+                        <div class="col-span-3 w-full flex gap-2 justify-between p-1">
                             <UButton
                                 @click.prevent.stop="markAsUndone(todoItem)"
                                 icon="i-lucide-arrow-up"

@@ -8,4 +8,11 @@ export default defineNuxtConfig({
         //
     ],
     css: ['~/assets/css/main.css'],
+
+    app: {
+        head: {
+            // titleTemplate: '%s - Nuxt ToDo App',
+            title: 'Nuxt ToDo App',
+        }
+    }
 });
